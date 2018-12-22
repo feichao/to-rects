@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/feichao/to-rects/issues"
   },
-  "homepage": "https://github.com/feichao/to-rects#readme"
+  "homepage": "https://github.com/feichao/to-rects#readme",
+  "dependencies": {
+    "poly-decomp": "^0.3.0"
+  }
 }
