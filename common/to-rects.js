@@ -10,27 +10,21 @@ const toLine = require('./to-line');
 function _toRects(points, accuracy = 1) {
   let line1;
   let line2;
-  let p1, p2, p3, p4;
-  if (points.length === 3) {
-    [p1, p2, p3] = points.sort((p1, p2) => p1[1] - p2[1]);
-    if (p2[0] > p3[0]) {
+  let [p1, p2, p3] = points.sort((p1, p2) => p1[1] - p2[1]);
+  if (p1[1] === p2[1]) {
+    if (p1[0] < p2[0]) { // 确保是逆时针
+      [p1, p2] = [p2, p1];
+    }
+    line1 = toLine(p1, p3);
+    line2 = toLine(p2, p3);
+  } else {
+    if (p2[0] < p3[0]) { // 确保是逆时针
       [p2, p3] = [p3, p2];
     }
     line1 = toLine(p1, p2);
     line2 = toLine(p1, p3);
   }
-
-  if (points.length === 4) {
-    [p1, p2, p3, p4] = points.sort((p1, p2) => p1[1] - p2[1]);
-    if (p1[0] > p2[0]) {
-      [p1, p2] = [p2, p1];
-    }
-    if (p3[0] > p4[0]) {
-      [p3, p4] = [p4, p3];
-    }
-    line1 = toLine(p1, p3);
-    line2 = toLine(p2, p4);
-  }
+  
 
   const rects = [];
   const minY = p1[1];

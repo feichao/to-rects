@@ -10,18 +10,16 @@ const toRects = require('./common/to-rects');
 function _main (points = [], options = {}) {
   const triangles = toConvex(points);
 
-  console.log('triangles: ', triangles);
-
   let yTriangles = [];
   triangles.forEach(trg => {
     yTriangles = yTriangles.concat(toYTriangles(trg));
   });
 
-  console.log('yTriangles: ', yTriangles);
+  console.log(yTriangles)
 
   let results = [];
   yTriangles.forEach(trg => {
-    results = results.concat(toRects(trg, options && options.accuracy));
+    results = results.concat(toRects(trg, { accuracy: options.accuracy }));
   }, []);
 
   return results;
@@ -41,6 +39,6 @@ const r = _main([
   [1, 8],
   [3, 6],
   [0, 4],
-], { accuracy: 2 });
+], { accuracy: 1 });
 
 console.log(r);

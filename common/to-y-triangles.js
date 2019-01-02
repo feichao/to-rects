@@ -10,8 +10,7 @@ function _toYTriangles (points) {
 
   // 如果两个点的 Y 坐标相同, 直接返回传入的三角形
   if (p1[1] === p2[1] || p2[1] === p3[1]) {
-    console.log('points: ', points)
-    return points;
+    return [points];
   }
 
   const line = toLine(p1, p3);
