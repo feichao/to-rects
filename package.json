@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/feichao/to-rects#readme",
   "dependencies": {
-    "poly-decomp": "^0.3.0"
+    "earcut": "^2.1.4"
   }
 }
