@@ -15,8 +15,6 @@ function _main (points = [], options = {}) {
     yTriangles = yTriangles.concat(toYTriangles(trg));
   });
 
-  console.log(yTriangles)
-
   let results = [];
   yTriangles.forEach(trg => {
     results = results.concat(toRects(trg, { accuracy: options.accuracy }));
@@ -32,13 +30,14 @@ module.exports = _main;
  */
 
 const r = _main([
-  [2, 2],
-  [4, 1],
-  [5, 3],
-  [4, 8],
-  [1, 8],
-  [3, 6],
-  [0, 4],
-], { accuracy: 1 });
+  [0, 0],
+  [75, 50],
+  [150, 0],
+  [300, 75],
+  [300, 150],
+  [150, 300],
+  [75, 150],
+  [0, 150],
+], { accuracy: 4 });
 
-console.log(r);
+console.log('window.testData = ' + JSON.stringify(r));

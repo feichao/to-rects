@@ -15,10 +15,10 @@ function _toRects(points, accuracy = 1) {
     if (p1[0] < p2[0]) { // 确保是逆时针
       [p1, p2] = [p2, p1];
     }
-    line1 = toLine(p1, p3);
-    line2 = toLine(p2, p3);
+    line1 = toLine(p2, p3);
+    line2 = toLine(p1, p3);
   } else {
-    if (p2[0] < p3[0]) { // 确保是逆时针
+    if (p2[0] > p3[0]) { // 确保是逆时针
       [p2, p3] = [p3, p2];
     }
     line1 = toLine(p1, p2);
@@ -30,14 +30,14 @@ function _toRects(points, accuracy = 1) {
   const minY = p1[1];
   const maxY = p3[1];
 
-  for(let i = minY + accuracy; i <= maxY; i+=accuracy) {
+  for(let i = minY; i <= maxY; i += accuracy) {
     const x1 = line1(i);
     const x2 = line2(i);
     rects.push({
       x: x1,
       y: i,
       height: accuracy,
-      width: x1 - x2
+      width: x2 - x1
     });
   }
 

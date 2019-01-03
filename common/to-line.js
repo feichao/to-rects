@@ -9,7 +9,7 @@ module.exports = function (point1, point2) {
     const [x2, y2] = point2;
 
     if (x1 === x2) {
-      return y1;
+      return x1;
     }
 
     const a = (y1 - y2) / (x1 - x2);
